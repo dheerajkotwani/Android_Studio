@@ -35,17 +35,22 @@ public class splash_screen extends AppCompatActivity {
         animation_y2.setDuration(400);
         animation_y2.start();
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
         AlphaAnimation line=new AlphaAnimation(0.0f,1.0f);
-        line.setDuration(250);
+        line.setStartOffset(0);
+        line.setDuration(1300);
         line.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
-
+                findViewById(R.id.line).setVisibility(View.VISIBLE);
+                findViewById(R.id.up).setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -53,6 +58,69 @@ public class splash_screen extends AppCompatActivity {
 
             }
         });
+        findViewById(R.id.line).startAnimation(line);
+        findViewById(R.id.up).startAnimation(line);
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        lineb = findViewById(R.id.line_b);
+        ObjectAnimator animation__x1=ObjectAnimator.ofFloat(lineb,"translationX",0f, 5500f);
+
+        animation__x1.setStartDelay(1500);
+        animation__x1.setDuration(1000);
+        animation__x1.start();
+        ObjectAnimator animation__x2=ObjectAnimator.ofFloat(findViewById(R.id.line_d),"translationX", 0f,-5500f);
+
+        animation__x2.setDuration(1000);
+        animation__x2.setStartDelay(1500);
+        animation__x2.start();
+        ObjectAnimator animation__y1=ObjectAnimator.ofFloat(findViewById(R.id.line_a),"translationY", 0f,-5500f);
+
+        animation__y1.setDuration(1000);
+        animation__y1.setStartDelay(1500);
+        animation__y1.start();
+        ObjectAnimator animation__y2=ObjectAnimator.ofFloat(findViewById(R.id.line_c),"translationY", 0f,5500f);
+
+        animation__y2.setDuration(1000);
+        animation__y2.setStartDelay(1500);
+        animation__y2.start();
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        AlphaAnimation end=new AlphaAnimation(1.0f,0.0f);
+        end.setStartOffset(1400);
+        end.setDuration(1300);
+        end.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                findViewById(R.id.line).setVisibility(View.INVISIBLE);
+                findViewById(R.id.up).setVisibility(View.INVISIBLE);
+                findViewById(R.id.line_a).setVisibility(View.INVISIBLE);
+                findViewById(R.id.line_b).setVisibility(View.INVISIBLE);
+                findViewById(R.id.line_c).setVisibility(View.INVISIBLE);
+                findViewById(R.id.line_d).setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        findViewById(R.id.line).startAnimation(end);
+        findViewById(R.id.up).startAnimation(end);
+        findViewById(R.id.line_a).startAnimation(end);
+        findViewById(R.id.line_b).startAnimation(end);
+        findViewById(R.id.line_c).startAnimation(end);
+        findViewById(R.id.line_d).startAnimation(end);
+
 
     }
 }
